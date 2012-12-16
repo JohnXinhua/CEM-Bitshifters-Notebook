@@ -1,11 +1,8 @@
+const int MAXSIZE = 100002;
 template <class T>
 class BIT {
 	public:
-		BIT(int maxSize, T* memPnt=NULL) : maxSize(maxSize) {
-			if(!memPnt) 
-				memPnt = new T[maxSize];
-			this->arr = memPnt;
-		}
+		BIT() : maxSize(MAXSIZE) { }
 		void addValue(int pos, T val) {
 			while(pos<maxSize) {
 				this->arr[pos] += val;
@@ -25,20 +22,15 @@ class BIT {
 		}
 	private:
 		int maxSize;
-		T* arr;
+		T arr[MAXSIZE];
 };
 
+const int MAXI = 1002;
+const int MAXJ = 1002;
 template <class T>
 class BiBIT {
 	public:
-		BiBIT(int maxI, int maxJ, T** memPnt=NULL) : maxI(maxI), maxJ(maxJ) {
-			if(!memPnt) {
-				memPnt = new int*[maxI];
-				for(int i = 0; i < maxI; ++i)
-					memPnt[i] = new int[maxJ];
-			}
-			this->arr = memPnt;
-		}
+		BiBIT() : maxI(MAXI), maxJ(MAXJ) { }
 		void addValue(int i, int j, T val) {
 			while(i < maxI) {
 				for(int jT = j; j < maxJ; j += (j&-j)) {
@@ -63,5 +55,8 @@ class BiBIT {
 	private:
 		int maxI;
 		int maxJ;
-		T** arr;
+		T arr[MAXI][MAXJ];
 };
+
+int main() {
+}
