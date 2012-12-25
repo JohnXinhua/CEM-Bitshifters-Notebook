@@ -33,7 +33,7 @@ class BiBIT {
 		BiBIT() : maxI(MAXI), maxJ(MAXJ) { }
 		void addValue(int i, int j, T val) {
 			while(i < maxI) {
-				for(int jT = j; j < maxJ; j += (j&-j)) {
+				for(int jT = j; jT < maxJ; jT += (jT&-jT)) {
 					this->arr[i][jT] += val;
 				}
 				i += (i&-i);
@@ -45,7 +45,7 @@ class BiBIT {
 		T getValue(int i, int j) {
 			T sum = T();
 			while(i) {
-				for(int jT = j; j; j -= (j&-j)) {
+				for(int jT = j; jT; jT -= (jT&-jT)) {
 					sum += this->arr[i][jT];
 				}
 				i -= (i&-i);
@@ -58,5 +58,3 @@ class BiBIT {
 		T arr[MAXI][MAXJ];
 };
 
-int main() {
-}
